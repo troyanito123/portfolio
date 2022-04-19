@@ -4,13 +4,15 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
+    "start": "concurrently \"npx sequelize-cli db:migrate\" \"node src/app.js\"",
     "start:dev": "nodemon src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "db:migrate": "npx sequelize-cli db:migrate"
   },
   "author": "Jassmanni Quiniones",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "concurrently": "^7.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",

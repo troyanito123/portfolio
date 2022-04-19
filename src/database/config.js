@@ -8,21 +8,7 @@ module.exports = {
     dialect: "postgres",
     dialectOptions: {
       bigNumberStrings: true,
-      ssl:
-        process.env.NODE_ENV === "production"
-          ? { rejectUnauthorized: false }
-          : false,
-    },
-  },
-  test: {
-    username: process.env.CI_DB_USERNAME,
-    password: process.env.CI_DB_PASSWORD,
-    database: process.env.CI_DB_NAME,
-    host: "127.0.0.1",
-    port: 3306,
-    dialect: "mysql",
-    dialectOptions: {
-      bigNumberStrings: true,
+      ssl: false,
     },
   },
   production: {
@@ -31,13 +17,10 @@ module.exports = {
     database: process.env.PROD_DB_NAME,
     host: process.env.PROD_DB_HOSTNAME,
     port: process.env.PROD_DB_PORT,
-    dialect: "mysql",
+    dialect: "postgres",
     dialectOptions: {
       bigNumberStrings: true,
-      ssl:
-        process.env.NODE_ENV === "production"
-          ? { rejectUnauthorized: false }
-          : false,
+      ssl: false,
     },
   },
 };
