@@ -43,6 +43,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       role: {
         type: DataTypes.STRING,
+        defaultValue: "USER",
         set(value) {
           this.setDataValue("role", value.toUpperCase());
         },

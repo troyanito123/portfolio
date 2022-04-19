@@ -4,7 +4,7 @@ module.exports = {
     password: "123123",
     database: "PORTFOLIO_DB",
     host: "127.0.0.1",
-    port: 5433,
+    port: 5432,
     dialect: "postgres",
     dialectOptions: {
       bigNumberStrings: true,

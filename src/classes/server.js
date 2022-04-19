@@ -3,6 +3,7 @@ const cors = require("cors");
 const { urlencoded } = require("express");
 
 const { sequelize } = require("../database/models");
+const { createDefaultUser } = require("../scripts/generate-default-values");
 
 class Server {
   constructor() {
@@ -47,7 +48,8 @@ class Server {
   }
 
   listen() {
-    this.app.listen(this.port, () => {
+    this.app.listen(this.port, async () => {
+      await createDefaultUser();
       console.log(`SERVER READY ON PORT ${this.port}`);
     });
   }
