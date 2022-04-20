@@ -4,6 +4,7 @@ const { urlencoded } = require("express");
 
 const { sequelize } = require("../database/models");
 const { createDefaultUser } = require("../scripts/generate-default-values");
+const path = require("path");
 
 class Server {
   constructor() {
@@ -36,11 +37,12 @@ class Server {
     this.app.use(cors());
     this.app.use(express.json());
     this.app.use(urlencoded({ extended: false }));
+    this.app.use(express.static("public"));
   }
 
   routes() {
-    this.app.get("/", (req, res) => {
-      res.json("HELLO");
+    this.app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "../../public/index.html"));
     });
     this.app.use(this.paths.messages, require("../routes/messages.route"));
     this.app.use(this.paths.users, require("../routes/users.route"));
